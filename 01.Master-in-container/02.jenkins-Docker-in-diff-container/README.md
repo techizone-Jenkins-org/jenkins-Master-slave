@@ -14,11 +14,13 @@ docker run --name jenkins-docker --rm --detach \
   --publish 2376:2376 \
   docker:dind --storage-driver overlay2
 ```
-### 3. Create the Jenkins Master container along with Docker-cli install in the Network "jenkins"
+### 3. Create the Jenkins Master container in the Network "jenkins"
 
 #### Build a new docker image from this Dockerfile
 ```
 docker build -t myjenkins-blueocean:2.504.2-1 .
+```
+#### Create the Jenkins Master container along with Docker-cli install in the Network "jenkins"
 ```
 docker run \
   --name jenkins-blueocean \
