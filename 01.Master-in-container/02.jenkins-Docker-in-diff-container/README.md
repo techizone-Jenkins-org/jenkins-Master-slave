@@ -38,3 +38,11 @@ docker run \
 ```
 ## Test when Jenkins Job create Container that will launch in Docker server or Not
 
+#### 1. Open Browser and Configure the Jenkins
+#### 2. Create the Jenkins JOB under execute Shell run the Docker Command
+```
+docker run nginx
+```
+### Check UP
+##### 1. Check wheather Job is Succeed or NOT
+##### 2. Check Container Created or Not in the docker server container
