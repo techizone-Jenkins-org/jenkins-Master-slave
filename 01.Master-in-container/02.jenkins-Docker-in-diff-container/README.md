@@ -46,3 +46,8 @@ docker run nginx
 ### Check UP
 ##### 1. Check wheather Job is Succeed or NOT
 ##### 2. Check Container Created or Not in the docker server container
+```
+Login to Jenkins Master container  and Docker server container using command "docker exec" and then hit the command "docker ps"
+See in Both Jenkins master and Docker server are showing smae containers or Not
+```
+
