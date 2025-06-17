@@ -1,7 +1,7 @@
-# jenkins-Master-slave
+# jenkins-Parmenet_Agent Container using SSH
 ## Build a new docker image from this Dockerfile
 ```
-docker build -t myjenkins-docker .
+docker build -t myjenkins-agent:ssh .
 ```
 ## Create a Container from our new docker image 
 
@@ -11,7 +11,17 @@ docker network cerate jenkins
 ```
 ### 2. Create the Jenkins master with Docker container in that Network
 ```
-docker run -dit -v jenkins_home:/var/jenkins_home -p 8080:8080 -p 50000:50000 --name jenkins-docker myjenkins-docker
+docker run -d --rm --name=jenkins-agent1 \
+  --publish 2200:22 \
+  --network agent-network \
+  --env DOCKER_HOST=tcp://docker:2376 \
+  --env DOCKER_CERT_PATH=/certs/client \
+  --env DOCKER_TLS_VERIFY=1 \
+  --volume jenkins-docker-certs:/certs/client:ro \
+  --volume jenkins-workdir:/var/lib/jenkins \
+  -e "JENKINS_AGENT_SSH_PUBKEY=<Your-SSH-KEY-HERE>" \
+  myjenkins-agent:ssh
+
 ```
 
 
